@@ -1,0 +1,15 @@
+# Requisitos mínimos para ejecutar el cuaderno de tracking
+# Generado a partir del entorno conda `vc_p6_env` (versiones fijas para reproducibilidad)
+
+numpy==2.1.3
+opencv-python==4.12.0.88
+ultralytics==8.3.239
+torch==2.9.1
+torchvision==0.24.1
+pandas==2.2.3
+matplotlib==3.10.0
+tqdm==4.67.1
+
+# Opcional (útiles según entorno):
+# opencv-python-headless==4.10.0.84  # usar en servidores sin display
+# jupyterlab==4.3.4                 # si se desea ejecutar en JupyterLab
