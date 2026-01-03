@@ -1,13 +1,13 @@
 {
   "video_info": {
     "fps": 30.0,
-    "total_frames": 481,
+    "total_frames": 490,
     "width": 1920,
     "height": 1080
   },
   "campo_puntos": [
     [
-      386.0,
+      378.0,
       718.0
     ],
     [
@@ -19,8 +19,8 @@
       918.0
     ],
     [
-      136.0,
-      932.0
+      141.0,
+      934.0
     ]
   ],
   "jugadores_ids": [
@@ -30,5 +30,5 @@
     5
   ],
   "num_jugadores": 4,
-  "total_detecciones": 1983
+  "total_detecciones": 2082
 }
