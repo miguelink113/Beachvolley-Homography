@@ -172,11 +172,11 @@ Los resultados generados por defecto se guardan en `outputs/`. Si quieres docume
 
 - Detección de campo
 
-![Deteccion de campo](outputs\field\auto_field_detection.png)
+![Deteccion de campo](outputs/field/auto_field_detection.png)
 
 - Seguimiento de jugadores
 
-![Seguimiento de jugadores](outputs\player_tracking\trajectories.png)
+![Seguimiento de jugadores](outputs/player_tracking/trajectories.png)
 
 
 
