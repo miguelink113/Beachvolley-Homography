@@ -2,7 +2,12 @@
 
 Proyecto de vision por computador para analizar partidos de voley playa desde video. El sistema detecta la pelota, detecta el campo, realiza la homografia hacia una vista cenital y hace seguimiento de jugadores para generar datos accionables y visualizaciones limpias.
 
-Autores: Miguel, Gorka y Wail
+Autores: 
+
+ - Miguel Castellano Hernández
+ - Gorka Eymard Santana Cabrera
+ - Wail Ben El Hassane Boudhar
+
 
 ---
 
@@ -105,17 +110,14 @@ Notas:
 ---
 
 ## Resultados y salidas
-Este repositorio genera:
-- CSV de tracks de pelota y jugadores.
-- JSON con puntos de referencia para la homografia.
-- Videos con anotaciones y mapas con trayectorias.
-
-Ejemplos en el repo:
-- `ball_track_edges.csv`
-- `ball_track_yolo.csv`
-- `map_points.json`
-- `ball_track_edges.mp4`
-- `ball_track_yolo.mp4`
+Este repositorio genera (via `beach_volleyball.ipynb`):
+- JSON de puntos de campo: `outputs/field/field_points.json`, `outputs/field/map_points.json`
+- Tracking de jugadores: `outputs/player_tracking/tracking_data.csv`, `outputs/player_tracking/tracking_summary.json`
+- Tracking de pelota (SAM2): `outputs/ball/ball_sam2_track.csv`
+- Pelota proyectada a cancha: `outputs/ball/ball_field_trajectory.csv`
+- Mapas de trayectorias: `outputs/player_tracking/trajectories.png`, `outputs/player_tracking/trajectory_player_*.png`
+- Visualizaciones de pelota: `outputs/ball/ball_contacts.png`, `outputs/ball/ball_trajectory.png`, `outputs/ball/ball_trajectory_field.png`
+- Video final con minimapa y contactos: `outputs/complete_tracking_video.mp4`
 
 ---
 
@@ -134,48 +136,43 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### Ejecucion (notebooks)
-El flujo principal esta en notebooks:
-- `VC_P6.ipynb` (analisis general y demo)
-- `ball_tracking.ipynb` (pelota)
-- `player_tracking.ipynb` (jugadores)
-- `analysis.ipynb` (analisis y visualizaciones)
+### Rutas de entrada 
+- Videos: `resources/VideosAnalisis/*.mp4`
+- Mapa de cancha: `resources/beachvolleyballcourt.png`
+
+### Ejecucion 
+El flujo principal esta en:
+- `beach_volleyball.ipynb`
 
 Abrir con Jupyter o VS Code y ejecutar celda a celda.
 
 ### Pesos y modelos
 Coloca los pesos en las rutas esperadas:
-- `yolo11n.pt` en la raiz del repo.
-- `checkpoints/` para pesos auxiliares (ej. SAM).
+- `weights/yolo11n.pt` (YOLO)
+- `checkpoints/sam2.1_hiera_tiny.pt` (SAM2, opcional)
 
-Si no estan disponibles, el pipeline puede fallar o quedar incompleto.
+Notas:
+- El notebook usa `configs/sam2.1/sam2.1_hiera_t.yaml` para SAM2. Asegura esa ruta si usas SAM2.
+- Si no estan disponibles, el pipeline puede fallar o quedar incompleto.
 
 ---
 
 ## Indicaciones para imagenes y videos
-Deja los recursos visuales en `docs/media/` (sugerencia). Agrega enlaces en estas secciones:
+Los resultados generados por defecto se guardan en `outputs/`. Si quieres documentar el proyecto, deja los recursos visuales en `docs/media/` (sugerencia) y agrega enlaces en estas secciones:
 
 ### Capturas del proyecto
-```markdown
-![Vista general](docs/media/overview.png)
-![Deteccion de pelota](docs/media/ball_detection.png)
-![Deteccion de campo](docs/media/court_detection.png)
-![Seguimiento de jugadores](docs/media/player_tracking.png)
-```
 
-### Videos por modulo
-```markdown
-[Video: Deteccion de pelota](docs/media/ball_demo.mp4)
-[Video: Deteccion de campo](docs/media/court_demo.mp4)
-[Video: Seguimiento de jugadores](docs/media/player_demo.mp4)
-```
+![Vista general]()
+![Deteccion de pelota](outputs/ball/ball_contacts.png)
+![Deteccion de campo](docs/media/court_detection.png)
+![Seguimiento de jugadores](outputs\player_tracking\trajectories.png)
+
+
 
 ### Video final del resultado
-```markdown
-[Video final](docs/media/final_result.mp4)
-```
 
-Tip: si el repositorio no admite archivos grandes, enlaza a un drive o plataforma externa.
+[Video final](outputs\complete_tracking_video.mp4)
+
 
 ---
 
@@ -187,6 +184,10 @@ Tip: si el repositorio no admite archivos grandes, enlaza a un drive o plataform
 - Optimizacion para ejecucion en tiempo real.
 
 ---
+
+## Nota Adicional
+Para la detección de la bola y el seguimiento se probó inicialmente utilizar un modelo de yolo entrenado con imagenes de pelotas de volley como habíamos observado en el repositorio open-source : 
+"https://github.com/shukkkur/VolleyVision?tab=readme-ov-file#%EF%B8%8F-court-tracking" y también probamos a seguir la pelota con detección por bordes y formas. En ambos escenarios los resultados distaban mucho de ser satisfactorios pero contamos con ellos por si se quisiesen consultar. Esto se debe principalmente a que en los clips de video de volley playa la pelota era demasiado pequeña y se movía muy rápidamente.
 
 ## Contacto
 Para colaboraciones o dudas, abre un issue o escribe a los autores.
