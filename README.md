@@ -162,16 +162,27 @@ Los resultados generados por defecto se guardan en `outputs/`. Si quieres docume
 
 ### Capturas del proyecto
 
-![Vista general]()
+- Vista general
+
+![Vista general](imagen_general.png)
+
+- Detección de pelota
+
 ![Deteccion de pelota](outputs/ball/ball_contacts.png)
-![Deteccion de campo](docs/media/court_detection.png)
+
+- Detección de campo
+
+![Deteccion de campo](outputs\field\auto_field_detection.png)
+
+- Seguimiento de jugadores
+
 ![Seguimiento de jugadores](outputs\player_tracking\trajectories.png)
 
 
 
 ### Video final del resultado
 
-[Video final](outputs\complete_tracking_video.mp4)
+![Demo](outputs/complete_tracking_video.gif)
 
 
 ---
